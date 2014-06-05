@@ -12,7 +12,6 @@ function getKeys(obj) {
 	for (var key in obj) {
 		keys.push(key);
 	}
-	var test = "";
 	return keys;
 }
 
