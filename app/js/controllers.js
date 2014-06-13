@@ -79,34 +79,11 @@ angular.module('myApp.controllers', [])
   .controller('MyCtrl2', ['$scope', function($scope) {
 
   }])
-	.controller('ProductCtrl',['$scope','$routeParams','$http',function($scope,$routeParams,$http){
+	.controller('ProductCtrl',['$scope','$routeParams','$http','getDetails',function($scope,$routeParams,$http,getDetails){
 		$scope.folderId = $routeParams.folderId;
 
-		var myParams = {};
-
-		myParams.login = 'gui@vme.com';
-		myParams.password = '234561';
-		myParams.apitv_client_id = 'cb57c714a3bd14d4b883126815f78a63801cbefcDE';
-		myParams.apitv_unique_device_id = '1234';
-		myParams.code_lang = 'de_DE';
-		myParams.folder_id = $scope.folderId;
-		myParams.level_info = '2';
-		myParams.with_count = 'YES';
-
-		var formatedParams = signParams(myParams);
-
-		$http({
-			method: 'POST',
-			url: 'http://apitv.watchever.com/ps3/v1.0/getDetails.json',
-			params: formatedParams
-		}).success(function(data, status, headers, config) {
-			// this callback will be called asynchronously
-			// when the response is available
-			console.log(data);
-			$scope.product = data[0];
-		}).error(function(data, status, headers, config) {
-			// called asynchronously if an error occurs
-			// or server returns response with an error status.
+		getDetails.getDetails($scope.folderId).then(function(data){
+			$scope.product = data;
 		});
 
 	}])

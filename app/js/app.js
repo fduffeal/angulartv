@@ -9,12 +9,13 @@ angular.module('myApp', [
   'myApp.directives',
   'myApp.controllers'
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
   $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-		$routeProvider.when('/product/:folderId', {
-			templateUrl: 'partials/product.html',
-			controller: 'ProductCtrl'
-		});
+	$routeProvider.when('/product/:folderId', {
+		templateUrl: 'partials/product.html',
+		controller: 'ProductCtrl'
+	});
   $routeProvider.otherwise({redirectTo: '/view1'});
+
 }]);
