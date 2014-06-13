@@ -79,7 +79,7 @@ angular.module('myApp.controllers', [])
   .controller('MyCtrl2', ['$scope', function($scope) {
 
   }])
-	.controller('ProductCtrl',['$scope','$routeParams','$http','getDetails',function($scope,$routeParams,$http,getDetails){
+	.controller('ProductCtrl',['$scope','$routeParams','getDetails',function($scope,$routeParams,getDetails){
 		$scope.folderId = $routeParams.folderId;
 
 		getDetails.getDetails($scope.folderId).then(function(data){
