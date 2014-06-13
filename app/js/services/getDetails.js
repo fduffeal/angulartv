@@ -63,11 +63,11 @@ app.service('apitv',['$http','signParams',
 	}
 ]);
 
-app.service('getDetails',['$http','apitv',
+app.service('product',['$http','apitv',
 	function($http,apitv){
 		var product = {};
 
-		this.getDetails = function(folderId){
+		this.getByFolderId = function(folderId){
 			var myParams = {};
 
 			myParams.login = 'gui@vme.com';
